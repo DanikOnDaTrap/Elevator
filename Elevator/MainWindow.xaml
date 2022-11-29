@@ -1,0 +1,95 @@
+﻿<Window x:Class="Elevator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:s="http://schemas.syncfusion.com/wpf"    
+        xmlns:local="clr-namespace:Elevator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="522"
+        FontSize="15">
+    <Grid x:Name="MainView" ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        
+        <Grid Grid.Column="0" ShowGridLines="False">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <TextBox x:Name="tb_diplayLiftMovement" 
+                     Grid.Row="0" 
+                     Width="220" 
+                     FontSize="14" 
+                     ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="261,169,-235,16" Grid.RowSpan="2"/>
+
+            <Grid Grid.Row="1" ShowGridLines="False" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+     
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12,-159,92,173">
+                    <RadioButton x:Name="rb_doorsOpened" 
+                                 Content ="Открыть двери" 
+                                 Margin="5"
+                                 Checked="rb_doorsChecked"/>
+                    <RadioButton x:Name="rb_doorsClosed"
+                                 Content ="Закрыть двери"
+                                 Margin="5"
+                                 Checked="rb_doorsChecked"/>
+                </StackPanel>
+
+                <Button x:Name="btn_startMove" 
+                        Content="Запуск"
+                        IsEnabled="False"
+                        Click="btn_startMove_Click" Margin="302,-109,-196,171"/>
+            </Grid>
+            <Label Content="Состояние дверей" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="33"/>
+        </Grid>
+
+        <Grid Grid.Column="1" ShowGridLines="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="92*"/>
+                <RowDefinition Height="92"/>
+                <RowDefinition Height="92*"/>
+                <RowDefinition Height="93*"/>
+
+
+            </Grid.RowDefinitions>
+
+            <!--Ввод кол-ва этажей в здании-->
+            <StackPanel Grid.Row="3" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-234,19,273,16" Width="218" Height="58">
+                <TextBlock Text="Количество этажей в здании:" Margin="0,0,-11,0"/>
+                <TextBox x:Name="tb_countFloors"
+                     Width="80"
+                     HorizontalContentAlignment="Center"
+                     TextChanged="tb_countFloors_TextChanged"
+                     PreviewTextInput="tb_PreviewTextInput"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-234,27,399,79" Grid.RowSpan="2">
+                <TextBlock Text="Направление"/>
+                <RadioButton x:Name="rb_moveUp"
+                             Margin="5"
+                             Content="Вверх"
+                             Checked="rb_moveChecked"/>
+                <RadioButton x:Name="rb_moveDown"
+                             Margin="5"
+                             Content="Вниз"
+                             Checked="rb_moveChecked"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,35,68,27">
+                <TextBlock Text="Текущий этаж:" Margin="5"/>
+                <Label x:Name="lb_currFloor" Content=""/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
